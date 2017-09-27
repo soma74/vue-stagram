@@ -13,25 +13,29 @@ const router = new Router({
 	routes: [
 		{
 			path: '/',
-			redirect: '/me'
+			redirect: '/vue-stagram/me'
 		},
 		{
-			path: '/me',
+			path: '/vue-stagram',
+			redirect: '/vue-stagram/me'
+		},
+		{
+			path: '/vue-stagram/me',
 			name: 'MyInfo',
 			component: MyInfo
 		},
 		{
-			path: '/login',
+			path: '/vue-stagram/login',
 			name: 'Login',
 			component: Login
 		},
 		{
-			path: '/feeds',
+			path: '/vue-stagram/feeds',
 			name: 'MyFeed',
 			component: MyFeed
 		},
 		{
-			path: '/search',
+			path: '/vue-stagram/search',
 			name: 'TagSearch',
 			component: TagSearch
 		}
@@ -47,10 +51,10 @@ router.beforeEach((to, from, next) => {
 			const tokenHash = to.hash
 			const tokenValue = tokenHash.split('=')[1]
 			localStorage.setItem('token', tokenValue)
-			next('/me')
+			next('/vue-stagram/me')
 			return
 		}
-		next('/login')
+		next('/vue-stagram/login')
 		return
 	}
 
